@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="Layer_1" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1305.4 1764.04">
+  <title>Estella's vector logo</title>
+  <defs>
+    <style>
+      .cls-1 {
+        fill: #231f20;
+      }
+    </style>
+  </defs>
+  <path class="cls-1" d="M224.16,972.17v596.95h838.16v194.92H0V0h1062.32v194.92H224.16v582.33M224.16,972.17,251.04,972.17,251.04,777.25h730.88v194.92H251.04M224.16,777.25h26.88"/>
+  <path class="cls-1" d="M224.16,973.38v790.66H0V.01h224.16v771.14M251.04,973.38h-26.88M251.04,771.15h830.78V218.74l214.01-104.17,9.58,1557.26-223.59-129.25v-569.19H251.04M224.16,771.15h26.88"/>
+  <polyline class="cls-1" points="251.04 214.45 251.04 597.36 1062.32 217.32"/>
+  <polyline class="cls-1" points="251.04 1542.58 251.04 1096.59 1062.32 1539.23"/>
+</svg>

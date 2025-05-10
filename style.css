@@ -1,0 +1,448 @@
+/* Self-hosted font (add your font files to /fonts/) */
+@font-face {
+    font-family: 'Sansation';
+    src: url('assets/fonts/Sansation-Regular.woff2') format('woff2'),
+         url('assets/fonts/Sansation-Regular.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+  }
+  
+  :root {
+    --primary-color: #6c757d;  /* Muted gray */
+    --secondary-color: #495057; /* Darker gray */
+    --bg-light: #f8f9fa;
+    --bg-dark: #343a40;
+    --text-light: #212529;
+    --text-dark: #f8f9fa;
+  }
+
+  html, body {
+    height: 100%; /* Ensures html and body take full viewport height */
+    margin: 0; /* Removes default margin */
+    padding: 0; /* Removes default padding */
+  }
+
+  main {
+    flex: 1; /* Takes up remaining space between header and footer */
+  }
+  
+  body {
+    font-family: 'Sansation', sans-serif;
+    margin: 0;
+    padding: 0;
+    color: var(--text-light);
+    background-color: var(--bg-light);
+    line-height: 1.6;
+    min-height: 100vh; /* Fallback for older browsers */
+    display: flex;
+    flex-direction: column; /* Stacks header, main, footer vertically */
+  }
+  
+  /* Dark mode preference */
+  @media (prefers-color-scheme: dark) {
+    body {
+      color: var(--text-dark);
+      background-color: var(--bg-dark);
+    }
+  }
+
+  /* Logo Link Styles */
+.logo-link {
+    display: inline-block;
+    transition: transform 0.2s ease;
+  }
+  
+  .logo-link:hover {
+    transform: scale(1.1);
+  }
+  
+  .logo-link:active {
+    transform: scale(0.95);
+  }
+  
+  /* Header & Navigation */
+  header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 2rem;
+    background-color: inherit;
+  }
+  
+  .logo-container {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+  
+  .logo-container img {
+    width: 40px;
+    height: 40px;
+  }
+  
+  nav ul {
+    display: flex;
+    gap: 1.5rem;
+    list-style: none;
+  }
+  
+  nav a {
+    text-decoration: none;
+    color: inherit;
+  }
+  
+  nav a:hover {
+    color: var(--primary-color);
+  }
+  
+  #mobile-menu-button {
+    display: none;
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    cursor: pointer;
+  }
+  
+  /* Main Content (Centered Layout) */
+  main {
+    max-width: 800px;
+    margin: auto;
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center; /* Vertical centering */
+
+  }
+  
+  .about-content {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    gap: 2rem;
+    align-items: center;
+  }
+  
+  .about-content img {
+    border-radius: 8px;
+    width: 100%;
+    height: auto;
+  }
+
+  /* Main Content Fade-In Animation */
+main {
+    opacity: 0;
+    animation: fadeIn 1s ease-out forwards;
+    animation-delay: 0.3s; /* Slight delay for smoother load */
+  }
+  
+  @keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+  
+  
+  /* Footer */
+  footer {
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background-color: inherit;
+    text-align: center;
+    padding: 1rem 0;
+    z-index: 100;
+    transition: transform 0.3s ease-in-out;
+  }
+  
+  /* Mobile Responsiveness */
+  @media (max-width: 720px) {
+    header {
+      position: relative; 
+      z-index: 1000; 
+    }
+  
+    
+    nav ul {
+      display: none;
+      flex-direction: column;
+      position: absolute;
+      top: 70px;
+      right: 2rem;
+      background-color: inherit;
+      padding: 1rem;
+      border-radius: 5px;
+    }
+  
+    nav ul.active {
+      display: flex;
+    }
+  
+    #mobile-menu-button {
+      display: block;
+    }
+  
+    .about-content {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  /* Portfolio Collage Styles */
+  main#photography {
+    padding-top: 80px; /* Creates consistent space below header */
+  }
+  
+  #artworks {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0;
+    max-width: 1000px;
+    margin: 0 auto; /* Removes vertical centering */
+    padding: 100px 0; /* Adds some vertical padding */
+  }
+  
+  .artwork-item {
+    position: relative;
+    overflow: hidden;
+    aspect-ratio: 1/1; /* Square format */
+  }
+  
+  .artwork-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: opacity 0.3s ease;
+  }
+  
+  .artwork-link {
+    position: relative;
+    display: block;
+    height: 100%;
+  }
+  
+  .artwork-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5); /* Grey overlay */
+    opacity: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: opacity 0.3s ease;
+  }
+  
+  .artwork-overlay-text {
+    color: white;
+    font-size: 1.5rem;
+    font-weight: bold;
+    text-align: center;
+    padding: 1rem;
+  }
+  
+  .artwork-link:hover .artwork-overlay {
+    opacity: 1;
+  }
+  
+  /* Mobile Responsiveness */
+  @media (max-width: 720px) {
+    #artworks {
+      grid-template-columns: 1fr;
+    }
+  }
+
+/* Photography Gallery Grid - Fixed Version */
+.photography-gallery {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr); /* 4 columns */
+    grid-auto-rows: minmax(200px, auto); /* Flexible row height */
+    gap: 16px;
+    max-width: 1200px;
+    margin: 2rem auto;
+    padding-bottom: 2rem; /* Extra space at bottom */
+  }
+  
+  /* Ensure body/html allow scrolling */
+  html, body {
+    height: 100%;
+    overflow-x: hidden; /* Prevent horizontal scroll */
+  }
+  
+  body {
+    min-height: 100vh;
+    overflow-y: auto; /* Always allow vertical scroll */
+  }
+  
+  /* Rest of your existing gallery styles... */
+  .photography-gallery img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s ease, opacity 0.3s ease;
+    aspect-ratio: 1/1;
+  }
+  
+  /* Hover effects */
+  .photography-gallery img:hover {
+    transform: scale(1.03);
+    opacity: 0.9;
+    cursor: pointer;
+  }
+  
+/* Mobile responsiveness - gallery specific */
+  @media (max-width: 1024px) {
+    .photography-gallery {
+      grid-template-columns: repeat(3, 1fr); /* 3 columns on tablets */
+    }
+  }
+  
+  @media (max-width: 720px) {
+    .photography-gallery {
+      grid-template-columns: repeat(2, 1fr); /* 2 columns on mobile */
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .photography-gallery {
+      grid-template-columns: 1fr; /* 1 column on small screens */
+    }
+  }
+
+  /* Graphic Design Gallery Grid */
+.graphic-design-gallery {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr); /* 4 columns */
+    grid-auto-rows: minmax(200px, auto); /* Flexible row height */
+    gap: 16px;
+    max-width: 1200px;
+    margin: 2rem auto;
+    padding-bottom: 2rem;
+  }
+  
+  .graphic-design-gallery img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    cursor: pointer;
+    transition: transform 0.3s ease, opacity 0.3s ease;
+    aspect-ratio: 1/1;
+  }
+  
+  .graphic-design-gallery img:hover {
+    transform: scale(1.03);
+    opacity: 0.9;
+  }
+
+  
+  /* Responsive Adjustments */
+  @media (max-width: 1024px) {
+    .graphic-design-gallery {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+  
+  @media (max-width: 768px) {
+    .graphic-design-gallery {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .graphic-design-gallery {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  /* Illustration Gallery Grid */
+.illustration-gallery {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* 3 columns */
+    grid-auto-rows: minmax(250px, auto); /* Taller rows for illustrations */
+    gap: 20px; /* Slightly larger gap */
+    max-width: 1000px; /* Narrower container */
+    margin: 2rem auto;
+    padding-bottom: 2rem;
+  }
+  
+  .illustration-gallery img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain; /* Show full illustrations without cropping */
+    background-color: #f5f5f5; /* Light background for transparent PNGs */
+    cursor: pointer;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border-radius: 4px; /* Soft rounded corners */
+  }
+  
+  .illustration-gallery img:hover {
+    transform: scale(1.05);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+  }
+  
+  /* Fullscreen Viewer  */
+  .fullscreen-viewer {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.95); /* Darker overlay */
+    display: none;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+  }
+  
+  .fullscreen-viewer.active {
+    display: flex;
+  }
+  
+  .viewer-content {
+    position: relative;
+    max-width: 90%;
+    max-height: 90%;
+    text-align: center;
+  }
+  
+  .fullscreen-image {
+    max-width: 100%;
+    max-height: 90vh;
+    object-fit: contain;
+    border-radius: 8px;
+  }
+  
+  .close-viewer {
+    position: absolute;
+    top: -50px;
+    right: 0;
+    background: none;
+    border: none;
+    color: white;
+    font-size: 2.5rem;
+    cursor: pointer;
+    transition: opacity 0.2s ease;
+  }
+  
+  .close-viewer:hover {
+    opacity: 0.8;
+  }
+  
+  /* Responsive Adjustments */
+  @media (max-width: 900px) {
+    .illustration-gallery {
+      grid-template-columns: repeat(2, 1fr);
+      max-width: 800px;
+    }
+  }
+  
+  @media (max-width: 600px) {
+    .illustration-gallery {
+      grid-template-columns: 1fr;
+      max-width: 500px;
+      gap: 15px;
+    }
+    
+    .illustration-gallery img {
+      max-height: 300px;
+      margin: 0 auto;
+    }
+  }
